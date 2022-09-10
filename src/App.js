@@ -1,6 +1,5 @@
 import React from "react";
 import Dictionary from "./Dictionary/Dictionary.js";
-
 import Footer from "./Footer/Footer.js";
 import "./styles.css";
 

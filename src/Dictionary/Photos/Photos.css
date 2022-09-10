@@ -1,0 +1,28 @@
+.Photos {
+  padding: 30px 5px 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 3;
+  grid-gap: 20px;
+}
+
+.Photos img {
+  border-radius: 4px;
+  transition: all 0.5s;
+}
+
+.Photos img:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 840px) {
+  .Photos {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
+  }
+}
+@media (max-width: 640px) {
+  .Photos {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
