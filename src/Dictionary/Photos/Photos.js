@@ -21,8 +21,8 @@ export default function Photos({ photos }) {
           >
             {photos.map(function (photo) {
               return (
-                <a className="photo-item" href={photo.src.original}>
-                  <img className="images" src={photo.src.original} alt="" />
+                <a className="photo-item" href={photo.src.large2x}>
+                  <img className="images" src={photo.src.large} alt="" />
                 </a>
               );
             })}
