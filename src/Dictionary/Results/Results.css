@@ -1,0 +1,44 @@
+.Results {
+  display: flex;
+  flex-direction: column;
+}
+
+.singleMean {
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  margin: 10px;
+  padding: 10px 20px;
+  border: 1px solid blue;
+}
+
+.accordion {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.item {
+  padding: 10px 20px;
+  margin-bottom: 5px;
+  border: 1px solid black;
+  border-radius: 30px;
+}
+
+.item-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+
+.content.show {
+  height: auto;
+  max-height: 9999px;
+  transition: all 0.5s;
+}

@@ -3,9 +3,9 @@ import React from "react";
 export default function Phonetic({ phonetic }) {
   return (
     <div className="Phonetic">
-      <audio controls preload="metadata" src={phonetic.audio}></audio>
+      {phonetic.text}🌟
       <br />
-      {phonetic.text}
+      <audio controls preload="metadata" src={phonetic.audio}></audio>
     </div>
   );
 }

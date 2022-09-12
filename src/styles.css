@@ -22,10 +22,11 @@ img {
 }
 
 body {
-  /* font-family: "Open Sans", sans-serif; */
-  /* color: black; */
-  /* font-size: 20px;
-  line-height: 28px; */
+  font-family: "Poppins", sans-serif;
+  color: black;
+  font-weight: 400;
+  font-size: 20px;
+  /* line-height: 28px; */
 }
 
 .container {
@@ -36,13 +37,14 @@ body {
 }
 
 .App {
-  background: grey;
+  background: #7effdb;
   min-height: 100vh;
   padding-top: 120px;
 }
 
 .App_content {
-  background-color: white;
+  /* background-color: white; */
+  background: #ff9de2;
   border-radius: 5px;
 }
 
