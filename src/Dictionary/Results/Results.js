@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-
+import AudioPlayer from "./AudioPlayer/AudioPlayer.js";
 import "../Results/Results.css";
 
-export default function Results({ results, keyword }) {
+export default function Results({ results, SearchAdd }) {
   const [selected, setSelected] = useState(null);
 
   if (results) {
@@ -18,12 +18,21 @@ export default function Results({ results, keyword }) {
         <h2>
           {results.word} <span>{results.phonetic}</span> 🌟
         </h2>
-
-        {results.phonetics.map((phonetic, i) => {
-          return (
-            phonetic.audio.length > 0 && (
+        {results.phonetics
+          .filter((phonetic) => phonetic.audio !== "")
+          .map((phonetic, i) => {
+            return (
               <div key={i}>
                 <div className="Phonetic">
+                  <span>
+                    {phonetic.audio ===
+                    `https://api.dictionaryapi.dev/media/pronunciations/en/${results.word}-uk.mp3`
+                      ? "British English (UK): "
+                      : "American English (US): "}
+                  </span>
+                  <span>
+                    <AudioPlayer audio={phonetic.audio} />
+                  </span>
                   <audio
                     controls
                     preload="metadata"
@@ -31,10 +40,8 @@ export default function Results({ results, keyword }) {
                   ></audio>
                 </div>
               </div>
-            )
-          );
-        })}
-
+            );
+          })}
         <div className="accordion">
           {results.meanings.map((item, i) => (
             <div className="item" key={i}>
@@ -71,7 +78,11 @@ export default function Results({ results, keyword }) {
                     <strong>Synonyms:</strong>
                     <ul className="Synonyms-list">
                       {item.synonyms.map(function (synonym, i) {
-                        return <li key={i}>{synonym}</li>;
+                        return (
+                          <li key={i} onClick={SearchAdd}>
+                            {synonym}
+                          </li>
+                        );
                       })}
                     </ul>
                   </div>
@@ -81,7 +92,11 @@ export default function Results({ results, keyword }) {
                     <strong>Antonyms:</strong>
                     <ul className="Antonyms-list">
                       {item.antonyms.map(function (antonym, i) {
-                        return <li key={i}>{antonym}</li>;
+                        return (
+                          <li key={i} onClick={SearchAdd}>
+                            {antonym}
+                          </li>
+                        );
                       })}
                     </ul>
                   </div>

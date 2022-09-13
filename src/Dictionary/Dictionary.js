@@ -4,6 +4,8 @@ import Results from "./Results/Results.js";
 import Photos from "./Photos/Photos.js";
 import { toast } from "react-toastify";
 import { MagnifyingGlass } from "react-loader-spinner";
+import dictionary from "../dictionary.png";
+import searchIcon from "../search-icon.svg";
 
 import "../Dictionary/Dictionary.css";
 
@@ -14,9 +16,10 @@ export default function Dictionary() {
   const [photos, setPhotos] = useState([]);
 
   function handleResponse(response) {
+    console.log(response.data[0]);
     if (response.data) {
       setResults(response.data[0]);
-      searchImages();
+      // searchImages();
     }
   }
 
@@ -43,12 +46,23 @@ export default function Dictionary() {
       e.preventDefault();
     }
     axios.get(apiUrl).then(handleResponse).catch(error);
-  }
 
-  function searchImages() {
     let pexelsApiKey =
       "563492ad6f91700001000001bc1878da3ccc4a229c4cf2524dd22df8";
     let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=8`;
+    let headers = { Authorization: `${pexelsApiKey}` };
+    axios
+      .get(pexelsApiUrl, { headers: headers })
+      .then(handlePexelsResponse)
+      .catch(error);
+  }
+
+  function SearchAdd(event) {
+    let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${event.target.innerHTML}`;
+    axios.get(apiUrl).then(handleResponse).catch(error);
+    let pexelsApiKey =
+      "563492ad6f91700001000001bc1878da3ccc4a229c4cf2524dd22df8";
+    let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${event.target.innerHTML}&per_page=8`;
     let headers = { Authorization: `${pexelsApiKey}` };
     axios
       .get(pexelsApiUrl, { headers: headers })
@@ -65,6 +79,9 @@ export default function Dictionary() {
         keyword.charAt(0).toUpperCase() + keyword.slice(1)
       }". 
 Please type the correct word`);
+    } else {
+      setPhotos([]);
+      toast.error(`❗️Sorry, we can't find the definition of this word`);
     }
   }
 
@@ -80,17 +97,29 @@ Please type the correct word`);
   if (loaded) {
     return (
       <div className="Dictionary">
+        <img
+          src={dictionary}
+          alt="dictionary icon"
+          style={{ width: 85, height: 85, margin: "0 auto" }}
+        />
         <span className="title">{keyword ? keyword : "Dictionary"}</span>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="Search"
-            value={keyword}
-            autoFocus={true}
-            onChange={handleKeywordChange}
-          />
-          <button type="">Search</button>
+        <form className="search" onSubmit={handleSubmit}>
+          <div className="icon__before">
+            <img src={searchIcon} alt="search icon" />
+            <input
+              type="Search"
+              value={keyword}
+              autoFocus={true}
+              placeholder="Enter a word"
+              onChange={handleKeywordChange}
+            />
+          </div>
+
+          <button className="btn" type="">
+            Search
+          </button>
         </form>
-        <Results results={results} keyword={keyword} />
+        <Results results={results} SearchAdd={SearchAdd} />
         <Photos photos={photos} />
       </div>
     );
@@ -99,14 +128,20 @@ Please type the correct word`);
     return (
       <div className="Dictionary">
         <span className="title">{keyword ? keyword : "Dictionary"}</span>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="Search"
-            value={keyword}
-            autoFocus={true}
-            onChange={handleKeywordChange}
-          />
-          <button type="">Search</button>
+        <form className="search" onSubmit={handleSubmit}>
+          <div className="icon__before">
+            <img src={searchIcon} alt="search icon" />
+            <input
+              type="Search"
+              value={keyword}
+              autoFocus={true}
+              placeholder="Enter a word"
+              onChange={handleKeywordChange}
+            />
+          </div>
+          <button className="btn" type="submit">
+            Search
+          </button>
         </form>
         <MagnifyingGlass
           visible={true}

@@ -6,6 +6,8 @@
     "@emotion/react": "^11.10.4",
     "@emotion/style": "^0.8.0",
     "@emotion/styled": "^11.10.4",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@mui/material": "^5.10.4",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

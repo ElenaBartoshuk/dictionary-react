@@ -19,9 +19,9 @@ export default function Photos({ photos }) {
             speed={500}
             plugins={[lgThumbnail, lgZoom]}
           >
-            {photos.map(function (photo) {
+            {photos.map(function (photo, index) {
               return (
-                <a className="photo-item" href={photo.src.large2x}>
+                <a key={index} className="photo-item" href={photo.src.large2x}>
                   <img className="images" src={photo.src.large} alt="" />
                 </a>
               );
