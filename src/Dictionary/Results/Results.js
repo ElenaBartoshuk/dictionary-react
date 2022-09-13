@@ -15,37 +15,62 @@ export default function Results({ results, SearchAdd }) {
 
     return (
       <div className="Results">
-        <h2>
+        <h2 className="title-word">
           {results.word} <span>{results.phonetic}</span> 🌟
         </h2>
-        {results.phonetics
-          .filter((phonetic) => phonetic.audio !== "")
-          .map((phonetic, i) => {
-            return (
-              <div key={i}>
-                <div className="Phonetic">
-                  <span>
+        <section className="phonetic">
+          {results.phonetics
+            .filter((phonetic) => phonetic.audio !== "")
+            .map((phonetic, i) => {
+              return (
+                <div key={i} className="phonetic-item">
+                  <span className="phonetic-player">
+                    <AudioPlayer audio={phonetic.audio} word={results.word} />
+                  </span>
+                  <span className="phonetic-lg">
                     {phonetic.audio ===
                     `https://api.dictionaryapi.dev/media/pronunciations/en/${results.word}-uk.mp3`
-                      ? "British English (UK): "
-                      : "American English (US): "}
-                  </span>
-                  <span>
-                    <AudioPlayer audio={phonetic.audio} />
+                      ? "British English (UK):"
+                      : phonetic.audio ===
+                        `https://api.dictionaryapi.dev/media/pronunciations/en/${results.word}-us.mp3`
+                      ? "American English (US)"
+                      : phonetic.audio ===
+                        `https://api.dictionaryapi.dev/media/pronunciations/en/${results.word}-au.mp3`
+                      ? "Australian English (AU):"
+                      : null}
                   </span>
                   <audio
                     controls
                     preload="metadata"
                     src={phonetic.audio}
+                    title={
+                      phonetic.audio ===
+                      `https://api.dictionaryapi.dev/media/pronunciations/en/${results.word}-uk.mp3`
+                        ? "Listen UK"
+                        : phonetic.audio ===
+                          `https://api.dictionaryapi.dev/media/pronunciations/en/${results.word}-us.mp3`
+                        ? "Listen US"
+                        : phonetic.audio ===
+                          `https://api.dictionaryapi.dev/media/pronunciations/en/${results.word}-au.mp3`
+                        ? "Listen AU"
+                        : null
+                    }
                   ></audio>
                 </div>
-              </div>
-            );
-          })}
-        <div className="accordion">
+              );
+            })}
+        </section>
+        <section className="accordion">
           {results.meanings.map((item, i) => (
             <div className="item" key={i}>
-              <div className="item-title" onClick={() => toggle(i)}>
+              <div
+                className="item-title"
+                onClick={() => toggle(i)}
+                title={
+                  selected === null &&
+                  `View "${results.word}" word definitions as ${item.partOfSpeech}`
+                }
+              >
                 <h3 style={{ textTransform: "uppercase" }}>
                   {item.partOfSpeech}
                 </h3>
@@ -57,29 +82,32 @@ export default function Results({ results, SearchAdd }) {
                 {item.definitions.slice(0, 4).map((definition, i) => {
                   return (
                     <div className="singleMean" key={i}>
-                      <span>
+                      <span className="definition">
                         <strong>
                           {i + 1}
                           {". "}Definition:
                         </strong>{" "}
                         {definition.definition}
-                        <br />
-                        {definition.example && (
-                          <span>
-                            <em>Example:</em> e.g. {definition.example}
-                          </span>
-                        )}
                       </span>
+                      {definition.example && (
+                        <span className="example">
+                          <span>Example:</span> e.g. {definition.example}
+                        </span>
+                      )}
                     </div>
                   );
                 })}
                 {item.synonyms.length > 0 && (
                   <div className="Synonyms">
-                    <strong>Synonyms:</strong>
+                    <span>Synonyms:</span>
                     <ul className="Synonyms-list">
-                      {item.synonyms.map(function (synonym, i) {
+                      {item.synonyms.slice(0, 12).map(function (synonym, i) {
                         return (
-                          <li key={i} onClick={SearchAdd}>
+                          <li
+                            key={i}
+                            onClick={SearchAdd}
+                            title="View synonym's definitions"
+                          >
                             {synonym}
                           </li>
                         );
@@ -89,11 +117,15 @@ export default function Results({ results, SearchAdd }) {
                 )}
                 {item.antonyms.length > 0 && (
                   <div className="Antonyms">
-                    <strong>Antonyms:</strong>
+                    <span>Antonyms:</span>
                     <ul className="Antonyms-list">
-                      {item.antonyms.map(function (antonym, i) {
+                      {item.antonyms.slice(0, 11).map(function (antonym, i) {
                         return (
-                          <li key={i} onClick={SearchAdd}>
+                          <li
+                            key={i}
+                            onClick={SearchAdd}
+                            title="View antonym's definitions"
+                          >
                             {antonym}
                           </li>
                         );
@@ -104,7 +136,7 @@ export default function Results({ results, SearchAdd }) {
               </div>
             </div>
           ))}
-        </div>
+        </section>
       </div>
     );
   } else {

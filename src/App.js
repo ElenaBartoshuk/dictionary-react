@@ -19,7 +19,16 @@ function App() {
       }}
     >
       <div className="container">
-        <Switch onChange={() => setIsDark(!isDark)} {...label} />
+        <div className="Switch">
+          <span>{isDark ? "Dark" : "Light"} theme</span>
+          <Switch
+            onChange={() => setIsDark(!isDark)}
+            {...label}
+            title={
+              isDark ? `Switch on "Light" theme` : `Switch on "Dark" theme`
+            }
+          />
+        </div>
         <div
           className="App_content"
           style={{
@@ -27,7 +36,11 @@ function App() {
           }}
         >
           <main>
-            <Dictionary isDark={isDark} setIsDark={setIsDark} />
+            <Dictionary
+              isDark={isDark}
+              setIsDark={setIsDark}
+              defaultKeyword={"beach"}
+            />
           </main>
           <Footer />
           <ToastContainer

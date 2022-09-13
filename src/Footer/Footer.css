@@ -1,10 +1,13 @@
+.footer {
+  font-size: 16px;
+}
+
 .source__code {
   background-color: rgba(252, 252, 252, 0.8);
   border-radius: 10px;
   padding: 7px 10px;
   text-align: center;
   color: var(--default-color);
-  font-size: 12px;
 }
 
 .source__code-link {
@@ -12,7 +15,7 @@
   text-decoration: underline;
   padding-left: 25px;
   position: relative;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .source__code-link:hover {
@@ -37,7 +40,6 @@
 
 .copy {
   text-align: center;
-  font-size: 12px;
   color: var(--default-color);
   margin: 0 10px 20px;
 }

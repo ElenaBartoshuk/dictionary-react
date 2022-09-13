@@ -9,14 +9,14 @@ import searchIcon from "../search-icon.svg";
 
 import "../Dictionary/Dictionary.css";
 
-export default function Dictionary() {
-  const [keyword, setKeyword] = useState("beach");
+export default function Dictionary({ defaultKeyword }) {
+  const [keyword, setKeyword] = useState(defaultKeyword);
   const [results, setResults] = useState(null);
   const [loaded, setLoaded] = useState(false);
   const [photos, setPhotos] = useState([]);
 
   function handleResponse(response) {
-    console.log(response.data[0]);
+    // console.log(response.data[0]);
     if (response.data) {
       setResults(response.data[0]);
       // searchImages();
@@ -103,22 +103,25 @@ Please type the correct word`);
           style={{ width: 85, height: 85, margin: "0 auto" }}
         />
         <span className="title">{keyword ? keyword : "Dictionary"}</span>
-        <form className="search" onSubmit={handleSubmit}>
-          <div className="icon__before">
-            <img src={searchIcon} alt="search icon" />
-            <input
-              type="Search"
-              value={keyword}
-              autoFocus={true}
-              placeholder="Enter a word"
-              onChange={handleKeywordChange}
-            />
-          </div>
+        <section>
+          <form className="search" onSubmit={handleSubmit}>
+            <div className="icon__before">
+              <img src={searchIcon} alt="search icon" />
+              <input
+                type="Search"
+                value={keyword}
+                autoFocus={true}
+                placeholder="Enter a word"
+                onChange={handleKeywordChange}
+                title="Enter the necessary word"
+              />
+            </div>
 
-          <button className="btn" type="">
-            Search
-          </button>
-        </form>
+            <button className="btn" type="">
+              Search
+            </button>
+          </form>
+        </section>
         <Results results={results} SearchAdd={SearchAdd} />
         <Photos photos={photos} />
       </div>

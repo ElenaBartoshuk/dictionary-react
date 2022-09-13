@@ -22,7 +22,12 @@ export default function Photos({ photos }) {
             {photos.map(function (photo, index) {
               return (
                 <a key={index} className="photo-item" href={photo.src.large2x}>
-                  <img className="images" src={photo.src.large} alt="" />
+                  <img
+                    className="images"
+                    src={photo.src.large}
+                    alt=""
+                    title="Open an image in full size"
+                  />
                 </a>
               );
             })}

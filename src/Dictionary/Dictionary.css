@@ -7,15 +7,24 @@
   padding: 30px;
 }
 
+.Dictionary section {
+  background: rgb(247, 181, 181);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
 .title {
   text-transform: uppercase;
   text-align: center;
   display: block;
+  font-size: 34px;
   font-weight: 700;
+  margin-top: 15px;
 }
 
 .search {
-  margin-bottom: 20px;
+  padding: 20px 0;
   display: flex;
   justify-content: center;
   align-items: center;
