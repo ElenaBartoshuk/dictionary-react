@@ -3,7 +3,14 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeHigh } from "@fortawesome/free-solid-svg-icons";
 
-export default function AudioPlayer({ audio, word }) {
+export default function AudioPlayer({
+  audio,
+  word,
+  isHover,
+  isDark,
+  handleMouseEnter,
+  handleMouseLeave,
+}) {
   const audioTrack = new Audio(audio);
   const start = () => {
     audioTrack.play();
@@ -13,6 +20,18 @@ export default function AudioPlayer({ audio, word }) {
       icon={faVolumeHigh}
       onClick={start}
       className="SoundIcon"
+      style={{
+        color:
+          isHover && isDark
+            ? "var(--primary-dark)"
+            : isHover && !isDark
+            ? "var(--primary)"
+            : !isHover
+            ? "var(--accent)"
+            : "",
+      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       title={
         audio ===
           `https://api.dictionaryapi.dev/media/pronunciations/en/${word}-uk.mp3` ||

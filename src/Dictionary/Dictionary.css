@@ -44,19 +44,14 @@
   width: 100%;
   border-radius: 15px;
   font-size: 18px;
-  color: #0f0766;
-  border-color: var(--accent);
+  color: var(--primary);
   background: rgba(252, 252, 252);
   transition: all 0.15s;
+  outline: none;
 }
 
 input[type="search"]::-webkit-search-decoration {
   display: none;
-}
-
-.search input:focus {
-  outline: none;
-  border-color: #59057b;
 }
 
 .icon__before {
@@ -65,7 +60,7 @@ input[type="search"]::-webkit-search-decoration {
   width: 100%;
 }
 
-.icon__before img {
+.icon__before svg {
   position: absolute;
   display: inline-block;
   width: 20px;
@@ -75,7 +70,7 @@ input[type="search"]::-webkit-search-decoration {
 }
 
 .search input::placeholder {
-  color: var(--primary);
+  color: rgba(55, 0, 179, 0.5);
   font-size: 18px;
   font-family: "Poppins", sans-serif;
 }
@@ -85,19 +80,20 @@ input[type="search"]::-webkit-search-decoration {
   border-radius: 20px;
   text-align: center;
   color: var(--primary);
-  border-color: var(--accent);
+  border: 1px solid var(--accent);
   background-color: var(--accent);
   outline: none;
   cursor: pointer;
   transition: all 0.3s;
   font-size: 18px;
   margin-left: 15px;
-  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px var(--accent);
   font-family: "Poppins", sans-serif;
   font-weight: 400;
 }
 
 .btn:hover {
-  background: #fff;
-  color: #0f0766;
+  background: rgba(252, 252, 252);
+  color: var(--primary);
+  transform: scale(1.1);
 }

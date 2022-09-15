@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import AudioPlayer from "./AudioPlayer/AudioPlayer.js";
 import "../Results/Results.css";
 
-export default function Results({ results, SearchAdd, isDark }) {
+export default function Results({
+  results,
+  SearchAdd,
+  isDark,
+  isHover,
+  handleMouseEnter,
+  handleMouseLeave,
+}) {
   const [selected, setSelected] = useState(null);
 
   if (results) {
@@ -20,6 +27,9 @@ export default function Results({ results, SearchAdd, isDark }) {
           style={{
             color: isDark ? "var(--primary-dark)" : "#eaddfc",
             background: isDark ? "var(--bg-dark2)" : "var(--primary)",
+            boxShadow: isDark
+              ? "0 2px 10px var(--primary-dark)"
+              : "0 2px 4px var(--primary)",
           }}
         >
           {results.word} <span>{results.phonetic}</span> 🌟
@@ -36,7 +46,14 @@ export default function Results({ results, SearchAdd, isDark }) {
               return (
                 <div key={i} className="phonetic-item">
                   <span className="phonetic-player">
-                    <AudioPlayer audio={phonetic.audio} word={results.word} />
+                    <AudioPlayer
+                      audio={phonetic.audio}
+                      word={results.word}
+                      isDark={isDark}
+                      isHover={isHover}
+                      handleMouseEnter={handleMouseEnter}
+                      handleMouseLeave={handleMouseLeave}
+                    />
                   </span>
                   <span className="phonetic-lg">
                     {phonetic.audio ===
@@ -48,7 +65,7 @@ export default function Results({ results, SearchAdd, isDark }) {
                           `https://api.dictionaryapi.dev/media/pronunciations/en/${results.word}-us.mp3` ||
                         phonetic.audio ===
                           `https://api.dictionaryapi.dev/media/pronunciations/en/${results.word}-1-us.mp3`
-                      ? "American English (US)"
+                      ? "American English (US):"
                       : phonetic.audio ===
                           `https://api.dictionaryapi.dev/media/pronunciations/en/${results.word}-au.mp3` ||
                         phonetic.audio ===
@@ -121,7 +138,7 @@ export default function Results({ results, SearchAdd, isDark }) {
                       className="singleMean"
                       key={i}
                       style={{
-                        color: isDark ? "var(--bg-light)" : "var(--primary)",
+                        color: isDark ? "var(--bg-light)" : "var(--bg-dark)",
                         backgroundColor: isDark
                           ? "var(--bg-dark2)"
                           : "var(--bg-light2)",
@@ -129,19 +146,28 @@ export default function Results({ results, SearchAdd, isDark }) {
                           ? "1px solid var(--primary-dark)"
                           : "1px solid var(--primary)",
                         boxShadow: isDark
-                          ? "2px 2px 4px 0px var(--primary-dark)"
-                          : "2px 2px 4px 0px var(--primary)",
+                          ? "1px 2px 4px 0px var(--primary-dark)"
+                          : "1px 2px 4px 0px var(--primary)",
                       }}
                     >
                       <span className="definition">
-                        <strong>
+                        <strong className="definition-title">
                           {i + 1}
                           {". "}Definition:
                         </strong>{" "}
                         {definition.definition}
                         {definition.example && (
                           <span className="example">
-                            <span>Example:</span> e.g. {definition.example}
+                            <span
+                              style={{
+                                color: isDark
+                                  ? "var(--primary-dark)"
+                                  : "var(--primary)",
+                              }}
+                            >
+                              Example:
+                            </span>{" "}
+                            e.g. {definition.example}
                           </span>
                         )}
                       </span>
@@ -152,10 +178,15 @@ export default function Results({ results, SearchAdd, isDark }) {
                   <div className="Synonyms">
                     <span
                       style={{
-                        color: isDark ? "var(--primary-dark)" : "#eaddfc",
+                        color: isDark
+                          ? "var(--primary-dark)"
+                          : "var(--primary)",
                         background: isDark
                           ? "var(--bg-dark2)"
-                          : "var(--primary)",
+                          : "var(--bg-light)",
+                        boxShadow: isDark
+                          ? "0 2px 5px var(--primary-dark)"
+                          : "0 2px 10px var(--accent)",
                       }}
                     >
                       Synonyms:
@@ -167,6 +198,17 @@ export default function Results({ results, SearchAdd, isDark }) {
                             key={i}
                             onClick={SearchAdd}
                             title="View synonym's definitions"
+                            style={{
+                              color: isDark
+                                ? "var(--color-dark)"
+                                : "var(--primary)",
+                              backgroundColor: isDark
+                                ? "var(--bg-dark2)"
+                                : "var(--color-dark)",
+                              boxShadow: isDark
+                                ? "0 2px 10px var(--accent)"
+                                : "0 2px 4px var(--primary)",
+                            }}
                           >
                             {synonym}
                           </li>
@@ -179,10 +221,15 @@ export default function Results({ results, SearchAdd, isDark }) {
                   <div className="Antonyms">
                     <span
                       style={{
-                        color: isDark ? "var(--primary-dark)" : "#eaddfc",
+                        color: isDark
+                          ? "var(--primary-dark)"
+                          : "var(--primary)",
                         background: isDark
                           ? "var(--bg-dark2)"
-                          : "var(--primary)",
+                          : "var(--bg-light)",
+                        boxShadow: isDark
+                          ? "0 2px 5px var(--primary-dark)"
+                          : "0 2px 10px var(--accent)",
                       }}
                     >
                       Antonyms:
@@ -194,6 +241,17 @@ export default function Results({ results, SearchAdd, isDark }) {
                             key={i}
                             onClick={SearchAdd}
                             title="View antonym's definitions"
+                            style={{
+                              color: isDark
+                                ? "var(--color-dark)"
+                                : "var(--primary)",
+                              backgroundColor: isDark
+                                ? "var(--bg-dark2)"
+                                : "var(--color-dark)",
+                              boxShadow: isDark
+                                ? "0 2px 10px var(--accent)"
+                                : "0 2px 4px var(--primary)",
+                            }}
                           >
                             {antonym}
                           </li>

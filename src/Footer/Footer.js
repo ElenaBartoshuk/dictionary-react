@@ -13,8 +13,8 @@ export default function Footer({ isDark }) {
           rel="noreferrer"
           style={{
             color: isDark ? "var(--primary-dark)" : "var(--primary)",
-            // color: hover && isDark ? "var(--primary)" : "var(--accent)",
           }}
+          title="View Dictionary app on Github"
         >
           <svg
             className="source__code-img"

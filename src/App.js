@@ -10,6 +10,16 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [isDark, setIsDark] = useState(false);
+  const [isHover, setIsHover] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHover(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHover(false);
+  };
+
   const label = { inputProps: { "aria-label": "Switch demo" } };
 
   return (
@@ -40,8 +50,11 @@ function App() {
           <main>
             <Dictionary
               isDark={isDark}
+              isHover={isHover}
               setIsDark={setIsDark}
-              defaultKeyword={"beach"}
+              defaultKeyword={"paradise"}
+              handleMouseEnter={handleMouseEnter}
+              handleMouseLeave={handleMouseLeave}
             />
           </main>
           <Footer isDark={isDark} />

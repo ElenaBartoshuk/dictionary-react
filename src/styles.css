@@ -49,18 +49,24 @@ body {
 }
 
 .App {
-  /* background: rgba(3, 218, 198, 0.5); */
   min-height: 100vh;
-  /* padding: 50px 30px; */
 }
 
 .App_content {
-  /* background-color: white; */
-  /* background: #ff9de2; */
   border-radius: 5px;
   padding: 50px 30px 30px;
 }
 
 .Switch {
   text-align: right;
+  font-size: 18px;
+}
+
+.css-jsexje-MuiSwitch-thumb {
+  background-color: var(--accent) !important;
+  box-shadow: 0 2px 2px var(--accent) !important;
+}
+
+.MuiSwitch-track {
+  background-color: #03dac6 !important;
 }
