@@ -1,7 +1,7 @@
 import React from "react";
 import "../Footer/Footer.css";
 
-export default function Footer() {
+export default function Footer({ isDark }) {
   return (
     <div className="footer">
       <div className="source__code">
@@ -11,6 +11,10 @@ export default function Footer() {
           href="https://github.com/ElenaBartoshuk/dictionary-react"
           target="_blank"
           rel="noreferrer"
+          style={{
+            color: isDark ? "var(--primary-dark)" : "var(--primary)",
+            // color: hover && isDark ? "var(--primary)" : "var(--accent)",
+          }}
         >
           <svg
             className="source__code-img"

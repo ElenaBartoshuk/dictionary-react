@@ -9,17 +9,15 @@ import searchIcon from "../search-icon.svg";
 
 import "../Dictionary/Dictionary.css";
 
-export default function Dictionary({ defaultKeyword }) {
+export default function Dictionary({ defaultKeyword, isDark }) {
   const [keyword, setKeyword] = useState(defaultKeyword);
   const [results, setResults] = useState(null);
   const [loaded, setLoaded] = useState(false);
   const [photos, setPhotos] = useState([]);
 
   function handleResponse(response) {
-    // console.log(response.data[0]);
     if (response.data) {
       setResults(response.data[0]);
-      // searchImages();
     }
   }
 
@@ -102,8 +100,19 @@ Please type the correct word`);
           alt="dictionary icon"
           style={{ width: 85, height: 85, margin: "0 auto" }}
         />
-        <span className="title">{keyword ? keyword : "Dictionary"}</span>
-        <section>
+        <span
+          className="title"
+          style={{
+            color: isDark ? "var(--primary-dark)" : "var(--primary)",
+          }}
+        >
+          {keyword ? keyword : "Dictionary"}
+        </span>
+        <section
+          style={{
+            backgroundColor: isDark ? "var(--bg-dark2)" : "var(--bg-light2)",
+          }}
+        >
           <form className="search" onSubmit={handleSubmit}>
             <div className="icon__before">
               <img src={searchIcon} alt="search icon" />
@@ -114,6 +123,11 @@ Please type the correct word`);
                 placeholder="Enter a word"
                 onChange={handleKeywordChange}
                 title="Enter the necessary word"
+                style={{
+                  border: isDark
+                    ? "2px solid var(--primary-dark)"
+                    : "1px solid var(--accent)",
+                }}
               />
             </div>
 
@@ -122,7 +136,7 @@ Please type the correct word`);
             </button>
           </form>
         </section>
-        <Results results={results} SearchAdd={SearchAdd} />
+        <Results results={results} SearchAdd={SearchAdd} isDark={isDark} />
         <Photos photos={photos} />
       </div>
     );

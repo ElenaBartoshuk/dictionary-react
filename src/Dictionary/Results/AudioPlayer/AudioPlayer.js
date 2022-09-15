@@ -15,13 +15,19 @@ export default function AudioPlayer({ audio, word }) {
       className="SoundIcon"
       title={
         audio ===
-        `https://api.dictionaryapi.dev/media/pronunciations/en/${word}-uk.mp3`
+          `https://api.dictionaryapi.dev/media/pronunciations/en/${word}-uk.mp3` ||
+        audio ===
+          `https://api.dictionaryapi.dev/media/pronunciations/en/${word}-1-uk.mp3`
           ? "Listen UK"
           : audio ===
-            `https://api.dictionaryapi.dev/media/pronunciations/en/${word}-us.mp3`
+              `https://api.dictionaryapi.dev/media/pronunciations/en/${word}-us.mp3` ||
+            audio ===
+              `https://api.dictionaryapi.dev/media/pronunciations/en/${word}-1-us.mp3`
           ? "Listen US"
           : audio ===
-            `https://api.dictionaryapi.dev/media/pronunciations/en/${word}-au.mp3`
+              `https://api.dictionaryapi.dev/media/pronunciations/en/${word}-au.mp3` ||
+            audio ===
+              `https://api.dictionaryapi.dev/media/pronunciations/en/${word}-1-au.mp3`
           ? "Listen AU"
           : null
       }

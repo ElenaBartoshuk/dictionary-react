@@ -1,10 +1,15 @@
+.Photos {
+  width: 100% !important;
+  background: none !important;
+}
+
 .lg-react-element {
   padding: 30px 5px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-row-gap: 10px;
   grid-column-gap: 15px;
-  width: 95%;
+  width: 98%;
   height: auto;
   margin: 0 auto;
 }

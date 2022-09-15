@@ -1,3 +1,15 @@
+:root {
+  --primary-light: #6200ee;
+  --primary-dark: #bb86fc;
+  --primary: #3700b3;
+  --accent: #03dac6;
+  --color-dark: #f5f5f5;
+  --bg-dark: #121212;
+  --bg-dark2: #292929;
+  --bg-light: #fff;
+  --bg-light2: #efe5fd;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -24,10 +36,9 @@ img {
 
 body {
   font-family: "Poppins", sans-serif;
-  color: black;
   font-weight: 400;
   font-size: 20px;
-  /* line-height: 28px; */
+  line-height: 28px;
 }
 
 .container {
@@ -38,15 +49,16 @@ body {
 }
 
 .App {
-  background: #7effdb;
+  /* background: rgba(3, 218, 198, 0.5); */
   min-height: 100vh;
-  padding-top: 120px;
+  /* padding: 50px 30px; */
 }
 
 .App_content {
   /* background-color: white; */
-  background: #ff9de2;
+  /* background: #ff9de2; */
   border-radius: 5px;
+  padding: 50px 30px 30px;
 }
 
 .Switch {

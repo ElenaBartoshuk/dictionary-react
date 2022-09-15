@@ -1,17 +1,17 @@
 .Dictionary {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   justify-content: space-between;
   width: 100%;
-  padding: 30px;
+  margin-bottom: 30px;
 }
 
 .Dictionary section {
-  background: rgb(247, 181, 181);
-  border-radius: 8px;
-  margin-bottom: 20px;
+  background-color: #efe5fd;
+  border-radius: 20px;
+  margin: 20px auto;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
 }
 
 .title {
@@ -21,10 +21,15 @@
   font-size: 34px;
   font-weight: 700;
   margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked {
+  color: #bb86fc !important;
 }
 
 .search {
-  padding: 20px 0;
+  padding: 30px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,11 +42,11 @@
   padding: 10px 15px;
   padding-left: 45px;
   width: 100%;
-  border-radius: 30px;
+  border-radius: 15px;
   font-size: 18px;
   color: #0f0766;
-  border-color: rgba(15, 7, 102, 0.7);
-  background: rgba(252, 252, 252, 0.8);
+  border-color: var(--accent);
+  background: rgba(252, 252, 252);
   transition: all 0.15s;
 }
 
@@ -66,22 +71,23 @@ input[type="search"]::-webkit-search-decoration {
   width: 20px;
   height: 20px;
   left: 16px;
-  top: 30%;
+  top: 28%;
 }
 
 .search input::placeholder {
-  color: rgba(15, 7, 102, 0.6);
+  color: var(--primary);
   font-size: 18px;
   font-family: "Poppins", sans-serif;
 }
 
 .btn {
-  padding: 10px 20px;
-  border-radius: 30px;
+  padding: 7px 20px;
+  border-radius: 20px;
   text-align: center;
-  color: #fff;
-  border-color: #0f0766;
-  background-color: rgba(15, 7, 102, 0.8);
+  color: var(--primary);
+  border-color: var(--accent);
+  background-color: var(--accent);
+  outline: none;
   cursor: pointer;
   transition: all 0.3s;
   font-size: 18px;
