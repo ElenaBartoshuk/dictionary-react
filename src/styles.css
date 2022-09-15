@@ -70,3 +70,7 @@ body {
 .MuiSwitch-track {
   background-color: #03dac6 !important;
 }
+
+.css-1nr2wod.Mui-checked {
+  color: #03dac6 !important;
+}
