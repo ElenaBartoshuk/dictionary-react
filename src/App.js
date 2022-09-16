@@ -27,7 +27,9 @@ function App() {
       className="App"
       style={{
         color: isDark ? "var(--color-dark)" : "var(--bg-dark)",
-        // color: isDark ? "var(--primary-dark)" : "var(--primary)",
+        background: isDark
+          ? "var(--bg-dark2)"
+          : "linear-gradient(102.7deg,rgb(253, 218, 255, 0.4) 8.2%,rgb(223, 173, 252, 0.4) 19.6%,rgb(173, 205, 252, 0.4) 36.8%,rgb(173, 252, 244, 0.4) 73.2%,rgb(202, 248, 208, 0.4) 90.9%)",
       }}
     >
       <div className="container">
