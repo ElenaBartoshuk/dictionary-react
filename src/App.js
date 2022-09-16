@@ -40,7 +40,9 @@ function App() {
           }}
         >
           <div className="Switch">
-            <span>{isDark ? "Dark" : "Light"} theme</span>
+            <span className="Switch-title">
+              {isDark ? "Dark" : "Light"} theme
+            </span>
             <Switch
               onChange={() => setIsDark(!isDark)}
               {...label}

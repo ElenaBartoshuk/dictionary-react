@@ -77,3 +77,33 @@ body {
 .css-1nr2wod {
   color: #03dac6 !important;
 }
+
+@media (max-width: 1200px) {
+  .App {
+    padding: 70px 0 50px;
+  }
+}
+
+@media (max-width: 840px) {
+  .App_content {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    line-height: 22px;
+  }
+  .container {
+    padding: 0 15px;
+  }
+  .App {
+    padding: 30px 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .Switch-title {
+    display: none;
+  }
+}

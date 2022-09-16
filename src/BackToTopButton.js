@@ -20,22 +20,7 @@ export default function BackToTopButton() {
   return (
     <div>
       {backToTopButton && (
-        <button
-          className="backtotop"
-          style={{
-            position: "fixed",
-            bottom: "50px",
-            right: "50px",
-            height: "47px",
-            width: "47px",
-            fontSize: "50px",
-            background: "rgb(3, 218, 198)",
-            border: "1px solid #03DAC6",
-            borderRadius: "50%",
-          }}
-          onClick={scrollUp}
-          title="Back to top"
-        >
+        <button className="backtotop" onClick={scrollUp} title="Back to top">
           <svg
             width="17"
             height="30"

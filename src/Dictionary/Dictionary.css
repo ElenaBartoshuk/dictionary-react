@@ -6,6 +6,12 @@
   margin-bottom: 30px;
 }
 
+.Dictionary-img {
+  width: 85px;
+  height: 85px;
+  margin: 0 auto;
+}
+
 .Dictionary section {
   background-color: #efe5fd;
   border-radius: 20px;
@@ -77,7 +83,7 @@ input[type="search"]::-webkit-search-decoration {
 
 .btn {
   padding: 7px 20px;
-  border-radius: 20px;
+  border-radius: 15px;
   text-align: center;
   color: var(--primary);
   border: 1px solid var(--accent);
@@ -96,4 +102,75 @@ input[type="search"]::-webkit-search-decoration {
   background: rgba(252, 252, 252);
   color: var(--primary);
   transform: scale(1.1);
+}
+
+@media (max-width: 1200px) {
+  .search {
+    width: 85%;
+  }
+}
+
+@media (max-width: 992px) {
+  .title-word {
+    width: auto;
+  }
+}
+
+@media (max-width: 840px) {
+  .Dictionary-img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .title-word {
+    font-size: 26px;
+    padding: 10px 15px;
+    border-radius: 23px;
+  }
+
+  .title-word span {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .Dictionary section {
+    width: 100%;
+  }
+  .search {
+    padding: 25px 0;
+  }
+  .title {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .search {
+    width: 90%;
+  }
+  .title-word {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .title-word span {
+    font-size: 22px;
+  }
+}
+@media (max-width: 476px) {
+  .search {
+    flex-direction: column;
+    padding: 20px 0 15px;
+    row-gap: 15px;
+  }
+}
+
+@media (max-width: 375px) {
+  .title-word {
+    font-size: 22px;
+  }
+  .title-word span {
+    font-size: 20px;
+  }
 }

@@ -101,9 +101,9 @@ Please type the correct word`);
     return (
       <div className="Dictionary">
         <img
+          className="Dictionary-img"
           src={dictionary}
           alt="dictionary icon"
-          style={{ width: 85, height: 85, margin: "0 auto" }}
         />
         <span
           className="title"

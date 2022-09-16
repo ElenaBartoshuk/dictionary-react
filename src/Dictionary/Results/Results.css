@@ -251,3 +251,82 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
   right: auto;
   left: 2px;
 }
+
+@media (max-width: 840px) {
+  .Synonyms,
+  .Antonyms {
+    margin-bottom: 10px;
+    margin-top: 25px;
+  }
+
+  .Synonyms span,
+  .Antonyms span {
+    margin-bottom: 20px;
+    font-size: 22px;
+    padding: 10px 15px;
+  }
+}
+@media (max-width: 768px) {
+  .content.show {
+    padding: 0px 8px;
+  }
+  .singleMean {
+    padding: 10px;
+  }
+  .phonetic {
+    width: 90% !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .phonetic-item {
+    flex-direction: column;
+    row-gap: 5px;
+  }
+  .phonetic-lg {
+    margin-right: 0;
+    text-align: center;
+    font-size: 18px;
+    line-height: 20px;
+  }
+  .phonetic {
+    width: 80% !important;
+    margin: 15px auto;
+  }
+
+  .item {
+    padding: 10px;
+  }
+  .item-title h3 {
+    font-size: 20px;
+  }
+  .item-title span {
+    font-size: 28px;
+  }
+
+  .accordion {
+    margin: 15px auto !important;
+  }
+  .singleMean {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 375px) {
+  .phonetic {
+    width: 95% !important;
+  }
+  .item {
+    padding: 7px;
+  }
+  .title-word {
+    width: 80% !important;
+  }
+  .singleMean {
+    font-size: 16px;
+  }
+  .Synonyms span,
+  .Antonyms span {
+    font-size: 20px;
+  }
+}

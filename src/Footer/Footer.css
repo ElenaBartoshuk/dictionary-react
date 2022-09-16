@@ -3,10 +3,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 .backtotop {
   transition: all 0.5s;
+  position: fixed;
+  bottom: 60px;
+  right: 110px;
+  height: 47px;
+  width: 47px;
+  font-size: 50px;
+  background: rgb(3, 218, 198);
+  border: 1px solid #03dac6;
+  border-radius: 50%;
 }
 
 .backtotop:hover {
@@ -52,4 +62,45 @@
 
 .copy span {
   font-weight: 500;
+}
+
+@media (max-width: 1200px) {
+  .backtotop {
+    right: 40px;
+  }
+}
+
+@media (max-width: 840px) {
+  .footer {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .backtotop {
+    bottom: 55px;
+    right: 35px;
+  }
+}
+
+@media (max-width: 640px) {
+  .backtotop {
+    bottom: 35px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer {
+    font-size: 14px;
+  }
+  .source__code-link {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 475px) {
+  .backtotop {
+    bottom: 35px;
+  }
 }
