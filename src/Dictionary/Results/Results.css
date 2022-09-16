@@ -310,6 +310,10 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
   .singleMean {
     font-size: 18px;
   }
+  .Synonyms-list li,
+  .Antonyms-list li {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 375px) {
