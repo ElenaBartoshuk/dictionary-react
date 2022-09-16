@@ -127,7 +127,7 @@
   height: auto;
   max-height: 9999px;
   transition: all 0.5s;
-  padding: 0 15px;
+  padding: 0 18px;
 }
 
 audio:hover,
@@ -268,7 +268,7 @@ audio::-webkit-media-controls-toggle-closed-captions-button {
 }
 @media (max-width: 768px) {
   .content.show {
-    padding: 0px 8px;
+    padding: 0px 10px;
   }
   .singleMean {
     padding: 10px;
