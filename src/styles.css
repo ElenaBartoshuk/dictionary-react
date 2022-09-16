@@ -50,12 +50,13 @@ body {
 
 .App {
   min-height: 100vh;
-  padding-top: 120px;
+  padding: 120px 0 50px;
 }
 
 .App_content {
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 50px 30px 30px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 
 .Switch {
