@@ -23,13 +23,19 @@ export default function Dictionary({
   function handleResponse(response) {
     if (response.data) {
       setResults(response.data[0]);
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     }
   }
 
   function handlePexelsResponse(response) {
-    if (response.data) {
+    if (response.data.photos.length !== 0) {
       setPhotos(response.data.photos);
       setKeyword("");
+    } else {
+      setPhotos([]);
     }
   }
 
@@ -76,14 +82,12 @@ export default function Dictionary({
   function error(error) {
     if (error && keyword.length > 0) {
       setResults(null);
-      setPhotos([]);
       setKeyword("");
       toast.error(`❗️Sorry, we can't find the definition of "${
         keyword.charAt(0).toUpperCase() + keyword.slice(1)
       }". 
 Please type the correct word`);
     } else {
-      setPhotos([]);
       toast.error(`❗️Sorry, we can't find the definition of this word`);
     }
   }
@@ -96,6 +100,53 @@ Please type the correct word`);
     Search();
     setLoaded(true);
   }
+
+  // function Results() {
+  //   if (results) {
+  //     // const toggle = (i) => {
+  //     //   if (selected === i) {
+  //     //     return setSelected(undefined);
+  //     //   }
+  //     //   setSelected(i);
+  //     // };
+  //     const toggle = (i) => {
+  //       selected === i ? setSelected(undefined) : setSelected(i);
+  //     };
+
+  //     <Results
+  //       results={results}
+  //       SearchAdd={SearchAdd}
+  //       isDark={isDark}
+  //       isHover={isHover}
+  //       selected={selected}
+  //       toggle={toggle}
+  //       handleMouseEnter={handleMouseEnter}
+  //       handleMouseLeave={handleMouseLeave}
+  //     />;
+  //   } else {
+  //     return null;
+  //   }
+  // }
+
+  // function Toggle() {
+  //   const toggle = (i) => {
+  //     selected === i ? setSelected(undefined) : setSelected(i);
+  //   };
+  //   <Results
+  //     results={results}
+  //     SearchAdd={SearchAdd}
+  //     isDark={isDark}
+  //     isHover={isHover}
+  //     selected={selected}
+  //     Toggle={Toggle}
+  //     handleMouseEnter={handleMouseEnter}
+  //     handleMouseLeave={handleMouseLeave}
+  //   />;
+  // }
+
+  // function Result() {
+  //   return results ? Toggle() : null;
+  // }
 
   if (loaded) {
     return (
@@ -157,7 +208,7 @@ Please type the correct word`);
           handleMouseEnter={handleMouseEnter}
           handleMouseLeave={handleMouseLeave}
         />
-        <Photos photos={photos} />
+        ;{photos.length !== 0 ? <Photos photos={photos} /> : undefined}
       </div>
     );
   } else {

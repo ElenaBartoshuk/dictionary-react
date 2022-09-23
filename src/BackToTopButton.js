@@ -29,8 +29,8 @@ export default function BackToTopButton() {
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M16.354 7.89597L15.647 8.60297L8.5 1.45697L1.354 8.60297L0.647 7.89597L8.5 0.0429688L16.354 7.89597Z"
               fill="#3700b3"
             />

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import AudioPlayer from "./AudioPlayer/AudioPlayer.js";
 import "../Results/Results.css";
+import Phonetic from "../Results/Phonetic.js";
 
 export default function Results({
   results,
@@ -10,14 +10,11 @@ export default function Results({
   handleMouseEnter,
   handleMouseLeave,
 }) {
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState(undefined);
 
   if (results) {
     const toggle = (i) => {
-      if (selected === i) {
-        return setSelected(null);
-      }
-      setSelected(i);
+      selected === i ? setSelected(undefined) : setSelected(i);
     };
 
     return (
@@ -34,82 +31,26 @@ export default function Results({
         >
           {results.word} <span>{results.phonetic}</span> 🌟
         </h2>
-        <section
-          className="phonetic"
-          style={{
-            backgroundColor: isDark ? "var(--bg-dark2)" : "var(--bg-light2)",
-          }}
-        >
-          {results.phonetics
-            .filter((phonetic) => phonetic.audio !== "")
-            .map((phonetic, i) => {
-              return (
-                <div key={i} className="phonetic-item">
-                  <span className="phonetic-player">
-                    <AudioPlayer
-                      audio={phonetic.audio}
-                      word={results.word}
-                      isDark={isDark}
-                      isHover={isHover}
-                      handleMouseEnter={handleMouseEnter}
-                      handleMouseLeave={handleMouseLeave}
-                    />
-                  </span>
-                  <span className="phonetic-lg">
-                    {phonetic.audio ===
-                      `https://api.dictionaryapi.dev/media/pronunciations/en/${results.word}-uk.mp3` ||
-                    phonetic.audio ===
-                      `https://api.dictionaryapi.dev/media/pronunciations/en/${results.word}-1-uk.mp3`
-                      ? "British English (UK):"
-                      : phonetic.audio ===
-                          `https://api.dictionaryapi.dev/media/pronunciations/en/${results.word}-us.mp3` ||
-                        phonetic.audio ===
-                          `https://api.dictionaryapi.dev/media/pronunciations/en/${results.word}-1-us.mp3`
-                      ? "American English (US):"
-                      : phonetic.audio ===
-                          `https://api.dictionaryapi.dev/media/pronunciations/en/${results.word}-au.mp3` ||
-                        phonetic.audio ===
-                          `https://api.dictionaryapi.dev/media/pronunciations/en/${results.word}-1-au.mp3`
-                      ? "Australian English (AU):"
-                      : null}
-                  </span>
-                  <audio
-                    controls
-                    preload="metadata"
-                    src={phonetic.audio}
-                    title={
-                      phonetic.audio ===
-                        `https://api.dictionaryapi.dev/media/pronunciations/en/${results.word}-uk.mp3` ||
-                      phonetic.audio ===
-                        `https://api.dictionaryapi.dev/media/pronunciations/en/${results.word}-1-uk.mp3`
-                        ? "Listen UK"
-                        : phonetic.audio ===
-                            `https://api.dictionaryapi.dev/media/pronunciations/en/${results.word}-us.mp3` ||
-                          phonetic.audio ===
-                            `https://api.dictionaryapi.dev/media/pronunciations/en/${results.word}-1-us.mp3`
-                        ? "Listen US"
-                        : phonetic.audio ===
-                            `https://api.dictionaryapi.dev/media/pronunciations/en/${results.word}-au.mp3` ||
-                          phonetic.audio ===
-                            `https://api.dictionaryapi.dev/media/pronunciations/en/${results.word}-1-au.mp3`
-                        ? "Listen AU"
-                        : null
-                    }
-                  ></audio>
-                </div>
-              );
-            })}
-        </section>
+
+        {(results.phonetics.length === 1 &&
+          results.phonetics[0].audio !== "") ||
+        (results.phonetics.length > 1 && results.phonetics[0].audio !== "") ||
+        (results.phonetics.length > 1 && results.phonetics[1].audio !== "") ||
+        (results.phonetics.length > 1 && results.phonetics[2].audio !== "") ? (
+          <Phonetic
+            results={results}
+            isDark={isDark}
+            isHover={isHover}
+            handleMouseEnter={handleMouseEnter}
+            handleMouseLeave={handleMouseLeave}
+          />
+        ) : undefined}
         <section className="accordion">
           {results.meanings.map((item, i) => (
             <div
               className="item"
               key={i}
               style={{
-                // backgroundColor: isDark
-                // ? "var(--bg-dark2)"
-                // : "var(--bg-light2)",
-
                 backgroundColor: selected === i && item ? "--bg-dark2" : "none",
               }}
             >
@@ -120,8 +61,9 @@ export default function Results({
                 }}
                 onClick={() => toggle(i)}
                 title={
-                  selected === null &&
-                  `View "${results.word}" word definitions as ${item.partOfSpeech}`
+                  selected === undefined
+                    ? `View "${results.word}" word definitions as ${item.partOfSpeech}`
+                    : undefined
                 }
               >
                 <h3 style={{ textTransform: "uppercase" }}>
