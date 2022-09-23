@@ -19,12 +19,13 @@ export default function Dictionary({
   const [results, setResults] = useState(null);
   const [loaded, setLoaded] = useState(false);
   const [photos, setPhotos] = useState([]);
+  const [selected, setSelected] = useState(undefined);
 
   function handleResponse(response) {
     if (response.data) {
       setResults(response.data[0]);
       window.scrollTo({
-        top: 0,
+        top: 100,
         behavior: "smooth",
       });
     }
@@ -43,6 +44,7 @@ export default function Dictionary({
     event.preventDefault();
     if (keyword.length > 0) {
       Search();
+      setSelected(undefined);
     } else {
       alert(`🙌 Please enter a word`);
     }
@@ -77,6 +79,7 @@ export default function Dictionary({
       .get(pexelsApiUrl, { headers: headers })
       .then(handlePexelsResponse)
       .catch(error);
+    setSelected(undefined);
   }
 
   function error(error) {
@@ -100,53 +103,6 @@ Please type the correct word`);
     Search();
     setLoaded(true);
   }
-
-  // function Results() {
-  //   if (results) {
-  //     // const toggle = (i) => {
-  //     //   if (selected === i) {
-  //     //     return setSelected(undefined);
-  //     //   }
-  //     //   setSelected(i);
-  //     // };
-  //     const toggle = (i) => {
-  //       selected === i ? setSelected(undefined) : setSelected(i);
-  //     };
-
-  //     <Results
-  //       results={results}
-  //       SearchAdd={SearchAdd}
-  //       isDark={isDark}
-  //       isHover={isHover}
-  //       selected={selected}
-  //       toggle={toggle}
-  //       handleMouseEnter={handleMouseEnter}
-  //       handleMouseLeave={handleMouseLeave}
-  //     />;
-  //   } else {
-  //     return null;
-  //   }
-  // }
-
-  // function Toggle() {
-  //   const toggle = (i) => {
-  //     selected === i ? setSelected(undefined) : setSelected(i);
-  //   };
-  //   <Results
-  //     results={results}
-  //     SearchAdd={SearchAdd}
-  //     isDark={isDark}
-  //     isHover={isHover}
-  //     selected={selected}
-  //     Toggle={Toggle}
-  //     handleMouseEnter={handleMouseEnter}
-  //     handleMouseLeave={handleMouseLeave}
-  //   />;
-  // }
-
-  // function Result() {
-  //   return results ? Toggle() : null;
-  // }
 
   if (loaded) {
     return (
@@ -205,10 +161,12 @@ Please type the correct word`);
           SearchAdd={SearchAdd}
           isDark={isDark}
           isHover={isHover}
+          selected={selected}
+          setSelected={setSelected}
           handleMouseEnter={handleMouseEnter}
           handleMouseLeave={handleMouseLeave}
         />
-        ;{photos.length !== 0 ? <Photos photos={photos} /> : undefined}
+        {photos.length !== 0 ? <Photos photos={photos} /> : undefined}
       </div>
     );
   } else {

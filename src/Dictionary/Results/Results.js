@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../Results/Results.css";
 import Phonetic from "../Results/Phonetic.js";
 
@@ -7,11 +7,11 @@ export default function Results({
   SearchAdd,
   isDark,
   isHover,
+  selected,
+  setSelected,
   handleMouseEnter,
   handleMouseLeave,
 }) {
-  const [selected, setSelected] = useState(undefined);
-
   if (results) {
     const toggle = (i) => {
       selected === i ? setSelected(undefined) : setSelected(i);
